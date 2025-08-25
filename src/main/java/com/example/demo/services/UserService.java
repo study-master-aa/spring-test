@@ -1,19 +1,19 @@
 package com.example.demo.services;
 
 import com.example.demo.models.UserDto;
+import com.example.demo.repositories.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
+    private final UserRepository userRepository;
+
     public List<UserDto> getUsers() {
-        List<UserDto> users = new ArrayList<>();
-        users.add(new UserDto("user1", 30L));
-        users.add(new UserDto("user2", 40L));
-        users.add(new UserDto("user3", 50L));
-        return users;
+        return userRepository.findAll();
     }
 }
